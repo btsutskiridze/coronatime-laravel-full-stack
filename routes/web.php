@@ -17,7 +17,9 @@ use App\Http\Controllers\LoginController;
 |
 */
 Route::get('/', [LoginController::class, 'show'])->name('login.show');
+
 Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
+
 Route::get('by-country', [ByCountryController::class, 'show'])->name('bycountry.show');
 
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');
