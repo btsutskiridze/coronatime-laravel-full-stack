@@ -7,6 +7,7 @@
     <title>Laravel</title>
     @vite('resources/css/app.css')
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="http://fonts.cdnfonts.com/css/inter" rel="stylesheet">
 
     <style>
         body {
@@ -15,7 +16,7 @@
     </style>
 </head>
 
-<body class="h-screen ">
+<body {{ $attributes(['class' => 'h-screen font-inter']) }}>
     {{ $header }}
 
     <div class="md:w-4/5 mx-auto  px-4">
