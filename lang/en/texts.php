@@ -12,4 +12,5 @@ return[
 	'get_personalised_notifications_via_email'=> 'Get <strong>personalised</strong> notifications via email',
 	'enter_your_email'                        => 'Enter your email',
 	'send'                                    => 'Send',
+	'statistics_by_country'                   => 'Statistics by country',
 ];
