@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use App\Http\Controllers\ByCountryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'welcome')->name('welcome');
+Route::get('/', [LoginController::class, 'show'])->name('login.show');
 Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
 Route::get('by-country', [ByCountryController::class, 'show'])->name('bycountry.show');
 
