@@ -30,7 +30,8 @@
 
             <div class=" hidden flex-row items-center gap-8 md:flex ">
                 <a href="#" class="font-bold">Bakari Ts.</a>
-                <a href="#" class="border-l-2 border-gray-200 pl-4 font-medium text-sm">Log Out</a>
+                <a href="#"
+                    class="border-l-2 border-gray-200 pl-4 font-medium text-sm">{{ __('texts.log_out') }}</a>
             </div>
 
         </div>
