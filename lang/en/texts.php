@@ -13,4 +13,5 @@ return[
 	'enter_your_email'                        => 'Enter your email',
 	'send'                                    => 'Send',
 	'statistics_by_country'                   => 'Statistics by country',
+	'location'                                => 'Location',
 ];
