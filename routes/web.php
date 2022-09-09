@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,17 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [LoginController::class, 'show'])->name('login.show');
+
+Route::middleware('guest')->group(function () {
+	Route::view('/', 'sessions.login')->name('login.show');
+	Route::view('register', 'sessions.register')->name('register.show');
+	Route::post('register', [AuthController::class, 'register'])->name('register');
+	Route::post('login', [AuthController::class, 'login'])->name('login');
+});
+
+Route::middleware('auth')->group(function () {
+	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
 

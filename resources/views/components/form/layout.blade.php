@@ -13,20 +13,21 @@
     </style>
 </head>
 
-<body {{ $attributes(['class' => 'h-full font-inter']) }}>
+<body {{ $attributes(['class' => 'h-full w-full lg:w-full sm:w-4/5 mx-auto font-inter']) }}>
     <div class="flex min-h-full">
         <div
             class="flex flex-1 flex-col self-start justify-center lg:w-[60%]  py-0 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-28">
             <div class="w-full ">
                 <div class="mt-10 mb-14">
-                    <img src="/images/logo.svg" alt="">
+                    <img src="{{ asset('images/logo.svg') }}" alt="logo">
                 </div>
                 {{ $slot }}
 
             </div>
         </div>
         <div class="relative hidden w-0 flex-1 lg:block lg:w-1/3">
-            <img class="absolute inset-0 h-full w-full object-cover" src="/images/covid.png" alt="">
+            <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('/images/covid.png') }}"
+                alt="covid-image">
         </div>
     </div>
 </body>
