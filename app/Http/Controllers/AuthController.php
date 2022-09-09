@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -17,9 +18,11 @@ class AuthController extends Controller
 			'password' => bcrypt($request->password),
 		]);
 
+		event(new Registered($user));
+
 		auth()->login($user);
 
-		return redirect()->route('worldwide.show');
+		return redirect()->route('email.verify');
 	}
 
 	public function login(LoginRequest $request)
