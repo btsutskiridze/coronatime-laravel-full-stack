@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\WorldwideController;
+use App\Http\Controllers\ByCountryController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [LoginController::class, 'show'])->name('login.show');
 
-Route::get('/', function () {
-	return view('welcome');
-});
+Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
+
+Route::get('by-country', [ByCountryController::class, 'show'])->name('bycountry.show');
+
+Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');
