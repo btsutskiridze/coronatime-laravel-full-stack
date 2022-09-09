@@ -2,7 +2,7 @@
 <nav class="bg-white px-4 py-4  ">
     <div class="flex flex-row justify-between items-center mx-auto">
         <a href="#" class="flex items-center">
-            <img src="{{ asset('/images/logo.svg') }}" class="mr-3 " alt="Flowbite Logo">
+            <img src="{{ asset('/images/logo.svg') }}" class="mr-3 " alt="coronatime-logo">
         </a>
         @auth
             <div class="flex flex-row items-center gap-2 md:gap-10 text-base">
@@ -15,7 +15,7 @@
                         <li class="font-medium py-2 pl-2">
                             {{ app()->currentLocale() == 'en' ? 'English' : 'ქართული' }}
                         </li>
-                        <img src="{{ asset('/images/arrow.svg') }}" alt="">
+                        <img src="{{ asset('/images/arrow.svg') }}" alt="arrow">
                     </button>
 
                     <a href="{{ route('language.change', app()->currentLocale() == 'en' ? 'ka' : 'en') }}" x-show="open"
@@ -27,7 +27,7 @@
 
                 <button class="p-2 md:hidden w-10 h-10 ">
                     <img src="{{ asset('/images/burger-menu.svg') }}" class="" id="burger-menu" @click='show=!show'
-                        alt="">
+                        alt="menu-icon">
                 </button>
 
                 <div class=" hidden flex-row items-center gap-8 md:flex ">
