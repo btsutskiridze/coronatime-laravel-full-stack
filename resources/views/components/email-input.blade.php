@@ -2,7 +2,7 @@
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
     <div class="relative">
         <div class="flex absolute inset-y-0 left-7 items-center pointer-events-none">
-            <img src="/images/search.svg" alt="">
+            <img src="{{ asset('/images/search.svg') }}" alt="">
         </div>
         <input type="email" id="default-search"
             class="block py-5 pl-16 w-full md:w-[424px] text-sm text-gray-900 bg-gray-50 rounded-[32px] border focus:outline-none border-gray-300 "
