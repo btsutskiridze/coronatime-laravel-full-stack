@@ -6,6 +6,7 @@ use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VerificationController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\VerificationController;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::middleware('guest')->group(function () {
 	Route::view('/', 'sessions.login')->name('login.show');
 	Route::view('register', 'sessions.register')->name('register.show');
@@ -27,9 +30,6 @@ Route::middleware('guest')->group(function () {
 
 Route::view('email/verified', 'email.verified')->middleware('auth')->name('email.verified');
 Route::view('email/verification', 'email.verify')->middleware('auth')->name('email.verify');
-
-// Route::get('/email/verify', [VerificationController::class, 'show'])->middleware('auth', 'signed')->name('verification.notice');
-// Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::middleware('auth')->group(function () {
 	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
