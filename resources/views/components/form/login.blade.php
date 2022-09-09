@@ -13,8 +13,8 @@
     <div class="mt-8">
 
         <div class="mt-6">
-            <form action="#" method="POST" class="space-y-6">
-
+            <form action="{{ route('login') }}" method="POST" class="space-y-6">
+                @csrf
                 <x-form.input name="username" placeholder="enter_unique_username_or_email" />
                 <x-form.input name="password" type="password" placeholder="fill_in_password" />
 
@@ -30,7 +30,8 @@
 
                 <div class="text-center">
                     <p class="text-[#808189] text-sm md:text-base">{{ __('texts.dont_have_an_account') }}? <a
-                            href="#" class="text-[#010414] font-bold">{{ __('texts.sign_up_for_free') }}</a></p>
+                            href="{{ route('register.show') }}"
+                            class="text-[#010414] font-bold">{{ __('texts.sign_up_for_free') }}</a></p>
                 </div>
 
             </form>
