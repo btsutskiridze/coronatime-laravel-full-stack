@@ -13,7 +13,7 @@
     </style>
 </head>
 
-<body {{ $attributes(['class' => 'h-full font-inter']) }}>
+<body {{ $attributes(['class' => 'h-full w-full lg:w-full sm:w-4/5 mx-auto font-inter']) }}>
     <div class="flex min-h-full">
         <div
             class="flex flex-1 flex-col self-start justify-center lg:w-[60%]  py-0 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-28">
