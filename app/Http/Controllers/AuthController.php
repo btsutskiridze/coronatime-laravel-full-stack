@@ -32,7 +32,7 @@ class AuthController extends Controller
 			'password'                                   => $request->password, ])
 		) {
 			throw ValidationException::withMessages([
-				'password'=> 'invalid',
+				'password'=> 'The password you entered is invalid',
 			]);
 		}
 
