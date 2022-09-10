@@ -24,7 +24,7 @@
             <div class="absolute mt-[2px] flex flex-row justify-center items-center">
                 <img src="{{ asset('images/error.svg') }}" alt="error">
                 <p class="text-sm m-0 text-red-500">
-                    {{ $message }}
+                    {{ __('texts.' . $message) }}
                 </p>
             </div>
         @enderror

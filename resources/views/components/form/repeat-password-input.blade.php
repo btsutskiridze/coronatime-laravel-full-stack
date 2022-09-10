@@ -9,13 +9,13 @@
             focus:outline-none focus:ring-indigo-500 sm:text-base 
             {{-- checking bellow if errors has occured yet or no to give borders according to it --}}
             @if (!$errors->any()) border-gray-300 
-            @elseif($errors->has('password_confirmation') || $errors->has('password')) border-red-600
+            @elseif($errors->has('password_confirmation') || $errors->any()) border-red-600
             @else border-green-600 @endif
             ">
         <img src="{{ asset('images/success.svg') }}"
             class="absolute top-5 right-2
             {{-- checking bellow if errors has occured yet or no to hide or display success --}}
-            @if (!$errors->any() || $errors->has('password_confirmation') || $errors->has('password')) hidden
+            @if (!$errors->any() || ($errors->has('password_confirmation') || $errors->any())) hidden
             @else block @endif
         "
             alt="success">

@@ -17,7 +17,7 @@
                 @csrf
                 <x-form.input name="username" placeholder="enter_unique_username_or_email" />
                 <x-form.input name="email" type="email" placeholder="enter_your_email" />
-                <x-form.input name="password" type="password" placeholder="fill_in_password" />
+                <x-form.password-input />
                 <x-form.repeat-password-input />
 
                 <div class="flex items-center justify-between">
