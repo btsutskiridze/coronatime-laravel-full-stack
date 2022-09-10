@@ -1,3 +1,3 @@
 <x-form.layout>
-    <x-form.register />
+    <x-sessions.register />
 </x-form.layout>
