@@ -16,7 +16,7 @@
             <form action="{{ route('login') }}" method="POST" class="space-y-6">
                 @csrf
                 <x-form.input name="username" placeholder="enter_unique_username_or_email" />
-                <x-form.input name="password" type="password" placeholder="fill_in_password" />
+                <x-form.password-input />
 
                 <div class="flex items-center justify-between">
                     <x-form.checkbox />
