@@ -7,6 +7,11 @@ use Illuminate\View\View;
 
 class WorldwideController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware(['auth', 'verified']);
+	}
+
 	public function show(): View |RedirectResponse
 	{
 		if (auth()->check())
