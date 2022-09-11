@@ -7,7 +7,6 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -30,12 +29,11 @@ class AuthController extends Controller
 	public function login(LoginRequest $request)
 	{
 		$remember = $request->has('remember') ? true : false;
-		if (!auth()->attempt(
-			[
-				$this->usernameOrEmail($request->username)   => $request->username,
-				'password'                                   => $request->password, ],
-			$remember
-		)
+
+		$nameInput = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$request->merge([$nameInput => $request->username]);
+
+		if (!auth()->attempt($request->only($nameInput, 'password'), $remember)
 		) {
 			throw ValidationException::withMessages([
 				'password'=> 'The password you entered is invalid',
@@ -45,7 +43,7 @@ class AuthController extends Controller
 		return redirect()->route('worldwide.show');
 	}
 
-	public function logout(Request $request)
+	public function logout()
 	{
 		auth()->logout();
 		return redirect('/');

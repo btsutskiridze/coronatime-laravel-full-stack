@@ -39,6 +39,7 @@ return[
 	'The email field is required.'                             => 'ელ-ფოსტის ველი აუცილებელია',
 	'The password you entered is invalid'                      => 'თქვენ მიერ შეყვანილი პაროლი არასწორია',
 	'The selected username is invalid.'                        => 'არჩეული მომხმარებლის სახელი არასწორია.',
+	'The selected username or email is invalid.'               => 'არჩეული მომხმარებლის სახელი ან ელ-ფოსტა არასწორია',
 	'The username must be at least 3 characters.'              => 'მომხმარებლის სახელი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',
 	'The password confirmation does not match.'                => 'პაროლები არ ემთხვევა.',
 	'The password must be at least 3 characters.'              => 'პაროლი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',

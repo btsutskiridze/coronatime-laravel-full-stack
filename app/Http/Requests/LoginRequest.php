@@ -28,4 +28,11 @@ class LoginRequest extends FormRequest
 			'password' => ['required'],
 		];
 	}
+
+	public function attributes()
+	{
+		return[
+			'username'=> 'username or email',
+		];
+	}
 }
