@@ -5,8 +5,8 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +22,22 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes(['verify' => true]);
 
 Route::middleware('guest')->group(function () {
-	Route::view('/', 'sessions.login')->name('login.show');
+	Route::get('', fn () =>redirect()->route('login.show'));
+	Route::view('/login', 'sessions.login')->name('login.show');
 	Route::view('register', 'sessions.register')->name('register.show');
 	Route::post('register', [AuthController::class, 'register'])->name('register');
 	Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
-Route::view('email/verified', 'email.verified')->middleware('auth')->name('email.verified');
-Route::view('email/verification', 'email.verify')->middleware('auth')->name('email.verify');
-
 Route::middleware('auth')->group(function () {
 	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-	Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-	Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
+	Route::get('email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
+	Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
+
+	Route::view('email/verification', 'auth.email.verify')->name('email.verify');
+	Route::view('email/verified', 'auth.email.verified')->name('email.verified');
 });
 
 Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
-
 Route::get('by-country', [ByCountryController::class, 'show'])->name('bycountry.show');
-
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');

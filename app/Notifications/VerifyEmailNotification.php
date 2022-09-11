@@ -68,7 +68,7 @@ class VerifyEmailNotification extends Notification
 		return (new MailMessage)
 			->subject(Lang::get('Verify Email Address'))
 			->line(Lang::get('Please click the button below to verify your email address.'))
-			->view('verification.message', [
+			->view('auth.email.message', [
 				'url'=> $url,
 			])
 			->action(Lang::get('Verify Email'), $url);

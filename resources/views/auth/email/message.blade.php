@@ -52,6 +52,7 @@
         }
 
         button {
+            cursor: pointer;
             color: white;
             background: #0FBA68;
             border-radius: 8px;
@@ -60,13 +61,13 @@
             line-height: 19px;
             text-align: center;
             padding: 19px 28%;
-            margin-top: 40px;
             outline: none;
             border: none;
         }
 
         a {
             display: flex;
+            margin-top: 40px;
             justify-content: center;
             text-decoration: none;
         }
