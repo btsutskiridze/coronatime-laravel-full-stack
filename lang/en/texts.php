@@ -32,6 +32,7 @@ return[
 	'dont_have_an_account'                                     => "Don't have an account",
 	'sign_up_for_free'                                         => 'Sign up for free',
 	'sign_up'                                                  => 'Sign up',
+	'sign_in'                                                  => 'Sign in',
 	'already_have_an_account'                                  => 'Already have an account',
 	'The username field is required.'                          => 'The username field is required.',
 	'The password field is required.'                          => 'The password field is required.',
@@ -43,4 +44,7 @@ return[
 	'The password must be at least 3 characters.'              => 'The password must be at least 3 characters.',
 	'The username has already been taken.'                     => 'The username has already been taken.',
 	'The email has already been taken.'                        => 'The email has already been taken.',
+	"We can't find a user with that email address."            => "We can't find a user with that email address.",
+	'reset_password'                                           => 'Reset password',
+	'save_changes'                                             => 'Save changes',
 ];

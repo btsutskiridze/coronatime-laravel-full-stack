@@ -32,6 +32,7 @@ return[
 	'dont_have_an_account'                                     => 'არ გაქვს ანგარიში',
 	'sign_up_for_free'                                         => 'დარეგისტრირდი უფასოდ',
 	'sign_up'                                                  => 'რეგისტრაცის',
+	'sign_in'                                                  => 'შესვლა',
 	'already_have_an_account'                                  => 'უკვე გაქვთ ანგარიში',
 	'The username field is required.'                          => 'მომხმარებლის სახელის ველი აუცილებელია.',
 	'The password field is required.'                          => 'პაროლის ველი აუცილებელია.',
@@ -43,4 +44,7 @@ return[
 	'The password must be at least 3 characters.'              => 'პაროლი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',
 	'The username has already been taken.'                     => 'მომხმარებლის სახელი უკვე არსებობს',
 	'The email has already been taken.'                        => 'ელ-ფოსტა უკვე დარეგისტრირებულია',
+	"We can't find a user with that email address."            => 'მომხმარებლის ამ ელ-ფოსტით არ არსებობს',
+	'reset_password'                                           => 'შეცვალე პაროლი',
+	'save_changes'                                             => 'ცვლილებების შენახვა',
 ];
