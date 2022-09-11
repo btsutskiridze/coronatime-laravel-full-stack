@@ -21,7 +21,7 @@
                 <div class="flex items-center justify-between">
                     <x-form.checkbox />
                     <div class="text-sm">
-                        <a href="#"
+                        <a href="{{ route('forgot_password.enter_email') }}"
                             class="font-bold text-[#2029F3] hover:text-indigo-500">{{ __('texts.forgot_password') }}?</a>
                     </div>
                 </div>

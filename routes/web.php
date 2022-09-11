@@ -6,6 +6,7 @@ use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerificationController;
 
 /*
@@ -27,6 +28,11 @@ Route::middleware('guest')->group(function () {
 	Route::view('register', 'sessions.register')->name('register.show');
 	Route::post('register', [AuthController::class, 'register'])->name('register');
 	Route::post('login', [AuthController::class, 'login'])->name('login');
+
+	Route::get('forgot-password', [ResetPasswordController::class, 'enterEmail'])->name('forgot_password.enter_email');
+	Route::post('forgot-password', [ResetPasswordController::class, 'sentEmail'])->name('forgot_password.sent_email');
+	Route::get('reset-password/{token}', [ResetPasswordController::class, 'enterNewPassword'])->name('password.reset');
+	Route::post('reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {
