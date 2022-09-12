@@ -1,3 +1,5 @@
+@props(['countries', 'worldwide'])
+
 <div class="pb-14 w-full">
     <x-search />
 
@@ -40,195 +42,19 @@
                                 <tr class="grid grid-cols-4">
                                     <td
                                         class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-[#010414] sm:pl-6">
-                                        Worldwide</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
+                                        {{ $worldwide->name }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
+                                        {{ $worldwide->confirmed }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
+                                        {{ $worldwide->recovered }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
+                                        {{ $worldwide->deaths }}
                                     </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
                                 </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
-                                <tr class="grid grid-cols-4">
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-gray-900 sm:pl-6">
-                                        Georgia</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        9,704,000
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        66,591</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                        5,803,905</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>

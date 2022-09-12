@@ -41,7 +41,7 @@ class CovidApi extends Command
 		{
 			$countryObj = new CountryStatistics();
 			$countryObj->code = $country['code'];
-			$countryObj->name = json_encode($country['name']);
+			$countryObj->name = $country['name'];
 			$countryObj->save();
 		}
 

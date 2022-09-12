@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class WorldwideController extends Controller
 {
@@ -16,7 +17,11 @@ class WorldwideController extends Controller
 	{
 		if (auth()->check())
 		{
-			return view('worldwide');
+			return view('worldwide', [
+				'confirmed'=> DB::table('country_statistics')->sum('confirmed'),
+				'recovered'=> DB::table('country_statistics')->sum('recovered'),
+				'deaths'   => DB::table('country_statistics')->sum('deaths'),
+			]);
 		}
 		return redirect()->route('login.show');
 	}
