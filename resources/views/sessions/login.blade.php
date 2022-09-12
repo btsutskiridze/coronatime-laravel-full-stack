@@ -1,3 +1,3 @@
 <x-form.layout>
-    <x-form.login />
+    <x-sessions.login />
 </x-form.layout>

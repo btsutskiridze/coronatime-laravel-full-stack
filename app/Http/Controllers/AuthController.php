@@ -6,30 +6,37 @@ use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
 	public function register(RegisterRequest $request)
 	{
+		$remember = $request->has('remember') ? true : false;
 		$user = User::create([
 			'username' => $request->username,
 			'email'    => $request->email,
 			'password' => bcrypt($request->password),
 		]);
 
-		auth()->login($user);
+		event(new Registered($user));
 
-		return redirect()->route('worldwide.show');
+		auth()->login($user, $remember);
+
+		return redirect()->route('email.verify');
 	}
 
 	public function login(LoginRequest $request)
 	{
-		if (!auth()->attempt([
-			$this->usernameOrEmail($request->username)   => $request->username,
-			'password'                                   => $request->password, ])
+		$remember = $request->has('remember') ? true : false;
+
+		$nameInput = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$request->merge([$nameInput => $request->username]);
+
+		if (!auth()->attempt($request->only($nameInput, 'password'), $remember)
 		) {
 			throw ValidationException::withMessages([
-				'password'=> 'invalid',
+				'password'=> 'The password you entered is invalid',
 			]);
 		}
 
@@ -38,6 +45,7 @@ class AuthController extends Controller
 
 	public function logout()
 	{
+		session()->flush();
 		auth()->logout();
 		return redirect('/');
 	}
