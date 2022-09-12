@@ -28,13 +28,13 @@ class ByCountryController extends Controller
 		{
 			return view('by-country', [
 				'worldwide' => $worldwide,
-				'countries' => CountryStatistics::sortable()->get(),
+				'countries' => CountryStatistics::sortable()->inRandomOrder()->get(),
 			]);
 		}
 		return redirect()->route('login.show');
 	}
 
-	public function search(Request $request)
+	public function search(Request $request): view
 	{
 		$search = ucfirst($request->input('search'));
 
