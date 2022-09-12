@@ -2,7 +2,7 @@
     <tr class="grid grid-cols-4 ">
         <th scope="col"
             class="flex md:gap-2 gap-0 justify-start items-center py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-            @sortablelink('name', trans('texts.location'))
+            @sortablelink('id', trans('texts.location'))
             <img src="{{ asset('/images/change-arrows.svg') }}" class="w-[15px]" alt="change-arrow">
         </th>
         <th scope="col"

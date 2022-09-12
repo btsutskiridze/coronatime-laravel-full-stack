@@ -13,7 +13,7 @@ class CountryStatistics extends Model
 
 	public $translatable = ['name'];
 
-	public $sortable = ['name', 'confirmed', 'recovered', 'deaths'];
+	public $sortable = ['id', 'name', 'confirmed', 'recovered', 'deaths'];
 
 	protected $guarded = ['id'];
 }
