@@ -28,7 +28,7 @@ class ByCountryController extends Controller
 		{
 			return view('by-country', [
 				'worldwide' => $worldwide,
-				'countries' => CountryStatistics::all(),
+				'countries' => CountryStatistics::sortable()->get(),
 			]);
 		}
 		return redirect()->route('login.show');
@@ -44,11 +44,27 @@ class ByCountryController extends Controller
 		}
 		else
 		{
-			$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
+			$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->sortable()->get();
 		}
 
 		return view('by-country', [
 			'countries'=> $countries,
 		]);
 	}
+
+	// public function sortLocationAsc()
+	// {
+	// 	$countries = CountryStatistics::all()->sortBy('name');
+	// 	return view('by-country', [
+	// 		'countries'=> $countries,
+	// 	]);
+	// }
+
+	// public function sortLocationDesc()
+	// {
+	// 	$countries = CountryStatistics::all()->sortByDesc('name');
+	// 	return view('by-country', [
+	// 		'countries'=> $countries,
+	// 	]);
+	// }
 }

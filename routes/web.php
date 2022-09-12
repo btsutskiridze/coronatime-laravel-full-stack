@@ -24,7 +24,7 @@ Auth::routes(['verify' => true]);
 
 Route::middleware('guest')->group(function () {
 	Route::get('', fn () =>redirect()->route('login.show'));
-	Route::view('/login', 'sessions.login')->name('login.show');
+	Route::view('login', 'sessions.login')->name('login.show');
 	Route::view('register', 'sessions.register')->name('register.show');
 	Route::post('register', [AuthController::class, 'register'])->name('register');
 	Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -46,4 +46,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
 Route::get('by-country', [ByCountryController::class, 'show'])->name('bycountry.show');
+Route::get('by-country/search', [ByCountryController::class, 'search'])->name('bycountry.search');
+// Route::get('by-country/location/sort/asc', [ByCountryController::class, 'sortLocationAsc'])->name('bycountry.sort_asc_location');
+// Route::get('by-country/location/sort/desc', [ByCountryController::class, 'sortLocationDesc'])->name('bycountry.sort_desc_location');
+
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');

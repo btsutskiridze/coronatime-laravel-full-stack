@@ -5,7 +5,6 @@
     <x-statistics.nav />
     <div class="pb-14 w-full">
         <x-search />
-
         <!-- This example requires Tailwind CSS v2.0+ -->
         <div class="">
 
@@ -34,7 +33,7 @@
                                             {{ $worldwide['deaths'] }}
                                         </td>
                                     </tr> --}}
-                                    @if ($countries->isNotEmpty())
+                                    @if ($countries->count())
 
                                         @foreach ($countries as $country)
                                             <x-table.row name="{{ $country['name'] }}"
