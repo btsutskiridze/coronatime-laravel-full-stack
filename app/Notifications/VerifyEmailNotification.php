@@ -44,7 +44,7 @@ class VerifyEmailNotification extends Notification
 	 *
 	 * @return \Illuminate\Notifications\Messages\MailMessage
 	 */
-	public function toMail($notifiable)
+	public function toMail($notifiable): MailMessage
 	{
 		$verificationUrl = $this->verificationUrl($notifiable);
 
@@ -63,7 +63,7 @@ class VerifyEmailNotification extends Notification
 	 *
 	 * @return \Illuminate\Notifications\Messages\MailMessage
 	 */
-	protected function buildMailMessage($url)
+	protected function buildMailMessage($url): MailMessage
 	{
 		return (new MailMessage)
 			->subject(Lang::get('Verify Email Address'))
@@ -81,7 +81,7 @@ class VerifyEmailNotification extends Notification
 	 *
 	 * @return string
 	 */
-	protected function verificationUrl($notifiable)
+	protected function verificationUrl($notifiable): string
 	{
 		if (static::$createUrlCallback)
 		{
@@ -105,7 +105,7 @@ class VerifyEmailNotification extends Notification
 	 *
 	 * @return void
 	 */
-	public static function createUrlUsing($callback)
+	public static function createUrlUsing($callback): void
 	{
 		static::$createUrlCallback = $callback;
 	}
@@ -117,7 +117,7 @@ class VerifyEmailNotification extends Notification
 	 *
 	 * @return void
 	 */
-	public static function toMailUsing($callback)
+	public static function toMailUsing($callback): void
 	{
 		static::$toMailCallback = $callback;
 	}
