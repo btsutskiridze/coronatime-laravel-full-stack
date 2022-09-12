@@ -39,7 +39,7 @@ class ResetPasswordController extends Controller
 
 	public function enterNewPassword($token)
 	{
-		return view('auth.password.enter-new-password', [
+		return view('auth.password.enter-new-passwords', [
 			'token' => $token,
 		]);
 	}
