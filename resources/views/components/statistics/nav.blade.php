@@ -11,7 +11,9 @@
         </a>
         <a href="{{ route('bycountry.show') }}"
             class="inline-block text-sm md:text-base pb-4
-            {{ Route::currentRouteName() == 'bycountry.show' ? ' border-b-[3px] border-[#010414] font-extrabold' : '' }}">
+            {{ Route::currentRouteName() == 'bycountry.show' || Route::currentRouteName() == 'bycountry.search'
+                ? ' border-b-[3px] border-[#010414] font-extrabold'
+                : '' }}">
             {{ __('texts.by_country') }}
         </a>
     </div>

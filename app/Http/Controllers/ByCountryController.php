@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CountryStatistics;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 
@@ -31,5 +32,23 @@ class ByCountryController extends Controller
 			]);
 		}
 		return redirect()->route('login.show');
+	}
+
+	public function search(Request $request)
+	{
+		$search = ucfirst($request->input('search'));
+
+		if ($search == 0)
+		{
+			$countries = CountryStatistics::all();
+		}
+		else
+		{
+			$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
+		}
+
+		return view('by-country', [
+			'countries'=> $countries,
+		]);
 	}
 }

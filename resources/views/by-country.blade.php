@@ -17,7 +17,7 @@
                             <table class="min-w-full ">
                                 <x-table.head />
                                 <tbody
-                                    class="divide-y h-[38rem] flex flex-col overflow-y-scroll w-full divide-gray-100 bg-white">
+                                    class="divide-y max-h-[38rem] flex flex-col overflow-y-auto w-full divide-gray-100 bg-white">
 
                                     {{-- <tr class="grid grid-cols-4">
                                         <td
@@ -34,12 +34,22 @@
                                             {{ $worldwide['deaths'] }}
                                         </td>
                                     </tr> --}}
+                                    @if ($countries->isNotEmpty())
 
-                                    @foreach ($countries as $country)
-                                        <x-table.row name="{{ $country['name'] }}"
-                                            confirmed="{{ $country['confirmed'] }}"
-                                            recovered="{{ $country['recovered'] }}" deaths="{{ $country['deaths'] }}" />
-                                    @endforeach
+                                        @foreach ($countries as $country)
+                                            <x-table.row name="{{ $country['name'] }}"
+                                                confirmed="{{ $country['confirmed'] }}"
+                                                recovered="{{ $country['recovered'] }}"
+                                                deaths="{{ $country['deaths'] }}" />
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td align="center"
+                                                class="text-red-600 flex justify-center py-2 text-lg"colspan="3">
+                                                {{ __('texts.nothing_was_found') }}
+                                            </td>
+                                        </tr>
+                                    @endif
 
                                 </tbody>
                             </table>
