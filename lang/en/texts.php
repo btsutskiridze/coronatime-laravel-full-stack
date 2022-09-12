@@ -49,4 +49,5 @@ return[
 	"We can't find a user with that email address."            => "We can't find a user with that email address.",
 	'reset_password'                                           => 'Reset password',
 	'save_changes'                                             => 'Save changes',
+	'nothing_was_found'                                        => 'Nothing was found',
 ];

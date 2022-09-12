@@ -49,4 +49,5 @@ return[
 	"We can't find a user with that email address."            => 'მომხმარებლის ამ ელ-ფოსტით არ არსებობს',
 	'reset_password'                                           => 'შეცვალე პაროლი',
 	'save_changes'                                             => 'ცვლილებების შენახვა',
+	'nothing_was_found'                                        => 'არაფერი მოიძებნა',
 ];
