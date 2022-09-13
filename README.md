@@ -1,64 +1,182 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div style="display:flex; align-items: center">
+  <h1 style="position:relative; top: -6px" >Corona time</h1>
+</div>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+This is an informational project about covid-19. So when user regisers, he/she will be able to see data of countries:
+new cases, recovers and deaths caused by corona virus.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Table of Contents
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   [Prerequisites](#prerequisites)
+-   [Tech Stack](#tech-stack)
+-   [Getting Started](#getting-started)
+-   [Migrations](#migration)
+-   [Development](#development)
+-   [Database Design](#database-design-diagram)
 
-## Learning Laravel
+#
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   *PHP@7.2 and up*
+-   _MYSQL@8 and up_
+-   _npm@6 and up_
+-   _composer@2 and up_
 
-## Laravel Sponsors
+#
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Tech Stack
 
-### Premium Partners
+-   [Laravel@6.x](https://laravel.com/docs/6.x) - back-end framework
+-   [TailwindCss](https://tailwindcss.com/) - front-end css framework
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#
 
-## Contributing
+### Getting Started
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1\. First of all you need to clone E Space repository from github:
 
-## Code of Conduct
+```sh
+git clone https://github.com/e-space1/espace-back.git
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2\. Next step requires you to run _composer install_ in order to install all the dependencies.
 
-## Security Vulnerabilities
+```sh
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3\. after you have installed all the PHP dependencies, it's time to install all the JS dependencies:
 
-## License
+```sh
+npm install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+and also:
+
+```sh
+npm run dev
+```
+
+in order to build your JS/SaaS resources.
+
+4\. Now we need to set our env file. Go to the root of your project and execute this command.
+
+```sh
+cp .env.example .env
+```
+
+And now you should provide **.env** file all the necessary environment variables:
+
+#
+
+**MYSQL:**
+
+> DB_CONNECTION=mysql
+
+> DB_HOST=127.0.0.1
+
+> DB_PORT=3306
+
+> DB_DATABASE=**\***
+
+> DB_USERNAME=**\***
+
+> DB_PASSWORD=**\***
+
+#
+
+**MAILGUN:**
+
+> MAILGUN_DOMAIN=**\*\***
+
+> MAILGUN_SECRET=**\*\***
+
+after setting up **.env** file, execute:
+
+```sh
+php artisan config:cache
+```
+
+in order to cache environment variables.
+
+4\. Now execute in the root of you project following:
+
+```sh
+  php artisan key:generate
+```
+
+Which generates auth key.
+
+##### Now, you should be good to go!
+
+#
+
+### Migration
+
+if you've completed getting started section, then migrating database if fairly simple process, just execute:
+
+```sh
+php artisan migrate
+```
+
+#
+
+### Running Unit tests
+
+Running unit tests also is very simple process, just type in following command:
+
+```sh
+composer test
+```
+
+#
+
+### Development
+
+You can run Laravel's built-in development server by executing:
+
+```sh
+  php artisan serve
+```
+
+when working on JS you may run:
+
+```sh
+  npm run dev
+```
+
+it builds your js files into executable scripts.
+If you want to watch files during development, execute instead:
+
+```sh
+  npm run watch
+```
+
+it will watch JS files and on change it'll rebuild them, so you don't have to manually build them.
+
+#
+
+### Deployment with CI \ CD
+
+Continues Development / Continues Integration & Deployment steps:
+
+-   CI \ CD process first step is of course is development.
+-   After some time of development when you are ready to integrate and deploy your feature/fix/work you make a commit or pull request to gihub branch.
+-   That triggers github action which listens to pull requests and commits on development and master branch. Github actions will set up configure project, run unit tests.
+-   If unit tests fail, you go a head and do some fixing and aftermath try again.
+-   If unit tests succeed then github actions will deploy your code to development or production server according to the branch you are making commit to.
+-   After deploying, github actions script will build your code and run migrations all to be up to date.
+
+Then everything should be OK :pray:
+
+#
+
+### Database Design diagram
+
+![Database Design](./readme/coronatime-mysql.png)
+<br />
