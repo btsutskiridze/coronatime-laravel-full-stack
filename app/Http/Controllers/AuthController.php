@@ -7,10 +7,11 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
-	public function register(RegisterRequest $request)
+	public function register(RegisterRequest $request): RedirectResponse
 	{
 		$remember = $request->has('remember') ? true : false;
 		$user = User::create([
@@ -26,7 +27,7 @@ class AuthController extends Controller
 		return redirect()->route('email.verify');
 	}
 
-	public function login(LoginRequest $request)
+	public function login(LoginRequest $request): RedirectResponse
 	{
 		$remember = $request->has('remember') ? true : false;
 
@@ -43,7 +44,7 @@ class AuthController extends Controller
 		return redirect()->route('worldwide.show');
 	}
 
-	public function logout()
+	public function logout(): RedirectResponse
 	{
 		session()->flush();
 		auth()->logout();

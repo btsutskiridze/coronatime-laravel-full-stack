@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
+use App\Models\CountryStatistics;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ByCountryController extends Controller
@@ -12,12 +13,30 @@ class ByCountryController extends Controller
 		$this->middleware(['auth', 'verified']);
 	}
 
-	public function show(): View|RedirectResponse
+	public function show(Request $request): View
 	{
-		if (auth()->check())
+		$search = $request->search
+		? ucfirst($request->input('search'))
+		: '';
+
+		$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
+
+		if ($request->column) //if request is about sorting
 		{
-			return view('by-country');
+			$countries = $request->column == 'name'
+			? CountryStatistics::where('name', 'LIKE', '%' . $search . '%')
+				->orderByRaw('JSON_EXTRACT(' . $request->column . ", '$.en') " . $request->order)
+				->get()
+			: CountryStatistics::where('name', 'LIKE', '%' . $search . '%')
+				->orderBy($request->column, $request->order)
+				->get();
 		}
-		return redirect()->route('login.show');
+
+		$newOrder = $request->order == 'asc' ? 'desc' : 'asc';
+
+		return view('by-country', [
+			'countries' => $countries,
+			'newOrder'  => $newOrder,
+		]);
 	}
 }

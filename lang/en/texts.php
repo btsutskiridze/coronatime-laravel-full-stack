@@ -40,6 +40,7 @@ return[
 	'The password you entered is invalid'                      => 'The password you entered is invalid',
 	'The selected username is invalid.'                        => 'The selected username is invalid.',
 	'The selected username or email is invalid.'               => 'The selected username or email is invalid.',
+	'The username or email field is required.'                 => 'The username field is required.',
 	'The username must be at least 3 characters.'              => 'The username must be at least 3 characters.',
 	'The password confirmation does not match.'                => 'The password confirmation does not match.',
 	'The password must be at least 3 characters.'              => 'The password must be at least 3 characters.',
@@ -48,4 +49,5 @@ return[
 	"We can't find a user with that email address."            => "We can't find a user with that email address.",
 	'reset_password'                                           => 'Reset password',
 	'save_changes'                                             => 'Save changes',
+	'nothing_was_found'                                        => 'Nothing was found',
 ];

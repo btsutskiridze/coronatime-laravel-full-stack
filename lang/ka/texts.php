@@ -40,6 +40,7 @@ return[
 	'The password you entered is invalid'                      => 'თქვენ მიერ შეყვანილი პაროლი არასწორია',
 	'The selected username is invalid.'                        => 'არჩეული მომხმარებლის სახელი არასწორია.',
 	'The selected username or email is invalid.'               => 'არჩეული მომხმარებლის სახელი ან ელ-ფოსტა არასწორია',
+	'The username or email field is required.'                 => 'მომხმარებლის სახელის ველი აუცილებელია',
 	'The username must be at least 3 characters.'              => 'მომხმარებლის სახელი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',
 	'The password confirmation does not match.'                => 'პაროლები არ ემთხვევა.',
 	'The password must be at least 3 characters.'              => 'პაროლი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',
@@ -48,4 +49,5 @@ return[
 	"We can't find a user with that email address."            => 'მომხმარებლის ამ ელ-ფოსტით არ არსებობს',
 	'reset_password'                                           => 'შეცვალე პაროლი',
 	'save_changes'                                             => 'ცვლილებების შენახვა',
+	'nothing_was_found'                                        => 'არაფერი მოიძებნა',
 ];

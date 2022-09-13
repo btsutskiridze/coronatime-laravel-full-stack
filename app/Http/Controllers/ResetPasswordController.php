@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ResetPasswordRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
-	public function enterEmail()
+	public function enterEmail(): View
 	{
 		return view('auth.password.enter-email');
 	}
 
-	public function sentEmail(ResetPasswordRequest $request)
+	public function sentEmail(ResetPasswordRequest $request): view
 	{
 		$request->validate(['email' => 'required|email']);
 
@@ -37,14 +39,14 @@ class ResetPasswordController extends Controller
 		return view('auth.password.check-email');
 	}
 
-	public function enterNewPassword($token)
+	public function enterNewPassword($token): view
 	{
 		return view('auth.password.enter-new-passwords', [
 			'token' => $token,
 		]);
 	}
 
-	public function updatePassword(ResetPasswordRequest $request)
+	public function updatePassword(ResetPasswordRequest $request): view|RedirectResponse
 	{
 		$request->validate([
 			'token'                 => 'required',
