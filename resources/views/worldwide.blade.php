@@ -5,5 +5,4 @@
     <x-statistics.nav />
     <x-statistics.worldwide confirmed="{{ $confirmed }}" recovered="{{ $recovered }}"
         deaths="{{ $deaths }}" />
-    <x-footer />
 </x-layout>
