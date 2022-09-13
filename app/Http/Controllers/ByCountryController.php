@@ -28,7 +28,7 @@ class ByCountryController extends Controller
 		{
 			return view('by-country', [
 				'worldwide' => $worldwide,
-				'countries' => CountryStatistics::sortable()->inRandomOrder()->get(),
+				'countries' => CountryStatistics::all(),
 			]);
 		}
 		return redirect()->route('login.show');
@@ -44,7 +44,7 @@ class ByCountryController extends Controller
 		}
 		else
 		{
-			$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->sortable()->get();
+			$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
 		}
 
 		return view('by-country', [
