@@ -1,4 +1,4 @@
-<form action="{{ route('bycountry.search') }}" method="GET" class="md:w-60 w-full py-10">
+<form action="{{ route('bycountry.show') }}" method="GET" class="md:w-60 w-full py-10">
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
     <div class="relative">
         <div class="flex absolute inset-y-0 left-0 items-center pl-6 pointer-events-none">

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\CountryStatistics;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\DB;
 
 class ByCountryController extends Controller
 {
@@ -15,56 +13,30 @@ class ByCountryController extends Controller
 		$this->middleware(['auth', 'verified']);
 	}
 
-	public function show(): View|RedirectResponse
+	public function show(Request $request): View
 	{
-		$worldwide = [
-			'name'     => 'Worldwide',
-			'confirmed'=> DB::table('country_statistics')->sum('confirmed'),
-			'recovered'=> DB::table('country_statistics')->sum('recovered'),
-			'deaths'   => DB::table('country_statistics')->sum('deaths'),
-		];
+		$search = $request->search
+		? ucfirst($request->input('search'))
+		: '';
 
-		if (auth()->check())
-		{
-			return view('by-country', [
-				'worldwide' => $worldwide,
-				'countries' => CountryStatistics::all(),
-			]);
-		}
-		return redirect()->route('login.show');
-	}
+		$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
 
-	public function search(Request $request): view
-	{
-		$search = ucfirst($request->input('search'));
+		if ($request->column) //if request is about sorting
+		{
+			$countries = $request->column == 'name'
+			? CountryStatistics::where('name', 'LIKE', '%' . $search . '%')
+				->orderByRaw('JSON_EXTRACT(' . $request->column . ", '$.en') " . $request->order)
+				->get()
+			: CountryStatistics::where('name', 'LIKE', '%' . $search . '%')
+				->orderBy($request->column, $request->order)
+				->get();
+		}
 
-		if ($search == 0)
-		{
-			$countries = CountryStatistics::all();
-		}
-		else
-		{
-			$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
-		}
+		$newOrder = $request->order == 'asc' ? 'desc' : 'asc';
 
 		return view('by-country', [
-			'countries'=> $countries,
+			'countries' => $countries,
+			'newOrder'  => $newOrder,
 		]);
 	}
-
-	// public function sortLocationAsc()
-	// {
-	// 	$countries = CountryStatistics::all()->sortBy('name');
-	// 	return view('by-country', [
-	// 		'countries'=> $countries,
-	// 	]);
-	// }
-
-	// public function sortLocationDesc()
-	// {
-	// 	$countries = CountryStatistics::all()->sortByDesc('name');
-	// 	return view('by-country', [
-	// 		'countries'=> $countries,
-	// 	]);
-	// }
 }

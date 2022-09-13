@@ -1,3 +1,7 @@
+@php
+$newOrder ??= 'asc';
+@endphp
+
 <x-layout>
     <x-slot name="header">
         <x-header />
@@ -14,25 +18,10 @@
                         <div class="overflow-hidden shadow  md:rounded-lg"
                             style="box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.04)">
                             <table class="min-w-full ">
-                                <x-table.head />
+                                <x-table.head neworder='{{ $newOrder }}' />
                                 <tbody
                                     class="divide-y max-h-[38rem] flex flex-col overflow-y-auto w-full divide-gray-100 bg-white">
 
-                                    {{-- <tr class="grid grid-cols-4">
-                                        <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-normal text-[#010414] sm:pl-6">
-                                            {{ $worldwide['name'] }}
-                                        </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                            {{ $worldwide['confirmed'] }}
-                                        </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                            {{ $worldwide['recovered'] }}
-                                        </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm font-normal text-[#010414] ">
-                                            {{ $worldwide['deaths'] }}
-                                        </td>
-                                    </tr> --}}
                                     @if ($countries->count())
 
                                         @foreach ($countries as $country)

@@ -46,8 +46,5 @@ Route::middleware('auth')->group(function () {
 
 Route::get('worldwide', [WorldwideController::class, 'show'])->name('worldwide.show');
 Route::get('by-country', [ByCountryController::class, 'show'])->name('bycountry.show');
-Route::get('by-country/search', [ByCountryController::class, 'search'])->name('bycountry.search');
-// Route::get('by-country/location/sort/asc', [ByCountryController::class, 'sortLocationAsc'])->name('bycountry.sort_asc_location');
-// Route::get('by-country/location/sort/desc', [ByCountryController::class, 'sortLocationDesc'])->name('bycountry.sort_desc_location');
 
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');
