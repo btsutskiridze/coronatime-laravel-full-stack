@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\LanguageController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------

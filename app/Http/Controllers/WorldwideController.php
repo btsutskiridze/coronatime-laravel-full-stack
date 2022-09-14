@@ -8,14 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class WorldwideController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware(['auth', 'verified']);
-	}
-
 	public function show(): View |RedirectResponse
 	{
-		if (auth()->check())
+		if (auth()->user()->email_verified_at)
 		{
 			return view('worldwide', [
 				'confirmed'=> DB::table('country_statistics')->sum('confirmed'),
@@ -23,6 +18,10 @@ class WorldwideController extends Controller
 				'deaths'   => DB::table('country_statistics')->sum('deaths'),
 			]);
 		}
-		return redirect()->route('login.show');
+		else
+		{
+			auth()->logout();
+			return redirect()->route('login.show');
+		}
 	}
 }
