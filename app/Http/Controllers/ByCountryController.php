@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CountryStatistics;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\View\View;
 
 class ByCountryController extends Controller
@@ -19,15 +20,15 @@ class ByCountryController extends Controller
 		? ucfirst($request->input('search'))
 		: '';
 
-		$countries = CountryStatistics::query()->where('name', 'LIKE', '%' . $search . '%')->get();
+		$countries = CountryStatistics::where('name->en', 'LIKE', '' . $search . '%')->orWhere('name->ka', 'LIKE', '' . $search . '%')->get();
 
 		if ($request->column) //if request is about sorting
 		{
-			$countries = $request->column == 'name'
-			? CountryStatistics::where('name', 'LIKE', '%' . $search . '%')
-				->orderByRaw('JSON_EXTRACT(' . $request->column . ", '$.en') " . $request->order)
+			$countries = App::currentLocale() === 'en'
+			? CountryStatistics::where('name->en', 'LIKE', '%' . $search . '%')
+				->orderBy($request->column, $request->order)
 				->get()
-			: CountryStatistics::where('name', 'LIKE', '%' . $search . '%')
+			: CountryStatistics::where('name->ka', 'LIKE', '%' . $search . '%')
 				->orderBy($request->column, $request->order)
 				->get();
 		}

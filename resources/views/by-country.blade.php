@@ -25,10 +25,9 @@ $newOrder ??= 'asc';
                                     @if ($countries->count())
 
                                         @foreach ($countries as $country)
-                                            <x-table.row name="{{ $country['name'] }}"
-                                                confirmed="{{ $country['confirmed'] }}"
-                                                recovered="{{ $country['recovered'] }}"
-                                                deaths="{{ $country['deaths'] }}" />
+                                            <x-table.row name="{{ $country->name }}"
+                                                confirmed="{{ $country->confirmed }}"
+                                                recovered="{{ $country->recovered }}" deaths="{{ $country->deaths }}" />
                                         @endforeach
                                     @else
                                         <tr>
