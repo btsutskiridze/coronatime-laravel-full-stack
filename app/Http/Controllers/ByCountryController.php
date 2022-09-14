@@ -15,7 +15,7 @@ class ByCountryController extends Controller
 
 	public function show(Request $request): View
 	{
-		$search = !$request->search
+		$search = $request->search
 		? ucfirst($request->input('search'))
 		: '';
 
