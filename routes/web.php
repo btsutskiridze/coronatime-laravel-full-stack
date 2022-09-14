@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\LanguageController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +37,13 @@ Route::middleware('guest')->group(function () {
 	Route::controller(ResetPasswordController::class)->group(function () {
 		Route::get('forgot-password', 'enterEmail')->name('forgot_password.enter_email');
 		Route::post('forgot-password', 'sentEmail')->name('forgot_password.sent_email');
-		Route::get('reset-password/{token}', 'enterNewPassword')->name('password.reset');
-		Route::post('reset-password', 'updatePassword')->name('password.update');
+		Route::get('reset-password/{token}', 'enterNewPassword')->name('reset-password.reset');
+		Route::post('reset-password', 'updatePassword')->name('reset-password.update');
 	});
 });
 
 Route::middleware('auth')->group(function () {
-	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+	Route::get('logout', [AuthController::class, 'logout'])->name('logout.logout');
 
 	Route::prefix('email')->group(function () {
 		Route::get('/verify', [VerificationController::class, 'notice'])->name('verification.notice');

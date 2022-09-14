@@ -23,7 +23,6 @@ class AuthController extends Controller
 		event(new Registered($user));
 
 		auth()->login($user, $remember);
-
 		return redirect()->route('email.verify');
 	}
 

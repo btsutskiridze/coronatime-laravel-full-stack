@@ -34,7 +34,7 @@
                     <a class="font-bold cursor-pointer">
                         {{ ucwords(auth()->user()->username) }}
                     </a>
-                    <a href="{{ route('logout') }}" class="border-l-2 border-gray-200 pl-4 font-medium text-sm">
+                    <a href="{{ route('logout.logout') }}" class="border-l-2 border-gray-200 pl-4 font-medium text-sm">
                         {{ __('texts.log_out') }}
                     </a>
                 </div>
