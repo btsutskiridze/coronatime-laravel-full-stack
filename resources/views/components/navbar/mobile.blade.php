@@ -5,7 +5,7 @@
             <a class="cursor-pointer font-bold p-2 hover:bg-blue-200 rounded-lg block">
                 {{ ucwords(auth()->user()->username) }}
             </a>
-            <a href="{{ route('logout') }}" class="font-medium p-2 hover:bg-blue-200 rounded-lg block">
+            <a href="{{ route('logout.logout') }}" class="font-medium p-2 hover:bg-blue-200 rounded-lg block">
                 {{ __('texts.log_out') }}
             </a>
         </ul>

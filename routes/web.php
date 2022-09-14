@@ -42,7 +42,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+	Route::get('logout', [AuthController::class, 'logout'])->name('logout.logout');
 
 	Route::prefix('email')->group(function () {
 		Route::get('/verify', [VerificationController::class, 'notice'])->name('verification.notice');

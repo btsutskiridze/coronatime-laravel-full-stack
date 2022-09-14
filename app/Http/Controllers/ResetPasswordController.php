@@ -66,6 +66,6 @@ class ResetPasswordController extends Controller
 
 		DB::table('password_resets')->where(['email'=>$updatePassword->email])->delete();
 
-		return view('auth.password.reset-success');
+		return view('auth.reset-password.reset-success');
 	}
 }
