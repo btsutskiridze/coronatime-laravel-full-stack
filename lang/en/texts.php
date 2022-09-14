@@ -5,7 +5,7 @@ return[
 	'log_in'                                                   => 'Log in',
 	'worldwide_statistics'                                     => 'Worldwide Statistics',
 	'worldwide'                                                => 'Worldwide',
-	'by_country'                                               => 'by country',
+	'by_country'                                               => 'By country',
 	'new_cases'                                                => 'New cases',
 	'recovered'                                                => 'Recovered',
 	'death'                                                    => 'Death',
