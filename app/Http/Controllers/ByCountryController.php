@@ -22,10 +22,10 @@ class ByCountryController extends Controller
 			if ($request->column) //if request is about sorting
 			{
 				$countries = App::currentLocale() === 'en'
-				? CountryStatistics::where('name->en', 'LIKE', '%' . $search . '%')
+				? CountryStatistics::where('name->en', 'LIKE', '' . $search . '%')
 					->orderBy($request->column, $request->order)
 					->get()
-				: CountryStatistics::where('name->ka', 'LIKE', '%' . $search . '%')
+				: CountryStatistics::where('name->ka', 'LIKE', '' . $search . '%')
 					->orderBy($request->column, $request->order)
 					->get();
 			}
