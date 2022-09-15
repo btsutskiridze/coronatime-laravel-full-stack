@@ -29,8 +29,6 @@ class CovidApi extends Command
 	 */
 	public function handle(): int
 	{
-		CountryStatistics::truncate();
-
 		$response = Http::withHeaders([
 			'accept' => 'application/json',
 		])->get('https://devtest.ge/countries');
@@ -39,21 +37,36 @@ class CovidApi extends Command
 		//creating saving json names and country code
 		foreach ($data as $country)
 		{
-			$countryObj = new CountryStatistics();
-			$countryObj->code = $country['code'];
-			$countryObj->name = $country['name'];
+			// $countryObj = new CountryStatistics();
+			// $countryObj->code = $country['code'];
+			// $countryObj->name = $country['name'];
 
 			$statisticResponse = Http::withHeaders([
 				'accept'      => 'application/json',
 				'Content-Type'=> 'application/json',
 			])->post('https://devtest.ge/get-country-statistics', [
-				'code'=> $countryObj->code,
+				'code'=> $country['code'],
 			]);
 			$statisticData = $statisticResponse->json();
 
-			$countryObj->confirmed = $statisticData['confirmed'];
-			$countryObj->recovered = $statisticData['recovered'];
-			$countryObj->deaths = $statisticData['deaths'];
+			// $countryObj->confirmed = $statisticData['confirmed'];
+			// $countryObj->recovered = $statisticData['recovered'];
+			// $countryObj->deaths = $statisticData['deaths'];
+			// $countryObj->save();
+
+			$countryObj = CountryStatistics::updateOrCreate(
+				[
+					'id'        => $statisticData['id'],
+				],
+				[
+					'code'      => $country['code'],
+					'name'      => $country['name'],
+					'confirmed' => $statisticData['confirmed'],
+					'recovered' => $statisticData['recovered'],
+					'deaths'    => $statisticData['deaths'],
+				]
+			);
+
 			$countryObj->save();
 		}
 
