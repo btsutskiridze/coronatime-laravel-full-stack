@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\LanguageController;
@@ -21,8 +20,6 @@ use GuzzleHttp\Middleware;
 |
 */
 
-Auth::routes(['verify' => true]);
-
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');
 
 Route::middleware('guest')->group(function () {
@@ -37,8 +34,8 @@ Route::middleware('guest')->group(function () {
 	Route::controller(ResetPasswordController::class)->group(function () {
 		Route::get('forgot-password', 'enterEmail')->name('forgot_password.enter_email');
 		Route::post('forgot-password', 'sentEmail')->name('forgot_password.sent_email');
-		Route::get('reset-password/{token}', 'enterNewPassword')->name('reset-password.reset');
-		Route::post('reset-password', 'updatePassword')->name('reset-password.update');
+		Route::get('reset-password/{token}', 'enterNewPassword')->name('reset_password.reset');
+		Route::post('reset-password', 'updatePassword')->name('reset_password.update');
 	});
 });
 

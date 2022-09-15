@@ -6,7 +6,7 @@
             </div>
             <div class="relative flex flex-col bottom-56 items-center justify-self-center self-start justify-center">
                 <h1 class="text-2xl font-black mb-10">{{ __('texts.reset_password') }}</h1>
-                <form action="{{ route('password.update') }}" method="POST" class="relative">
+                <form action="{{ route('reset_password.update') }}" method="POST" class="relative">
                     @csrf
                     <input name="token" class="hidden" value="{{ $token }}">
                     <div>

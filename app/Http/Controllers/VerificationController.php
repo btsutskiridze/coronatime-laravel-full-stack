@@ -16,7 +16,6 @@ class VerificationController extends Controller
 	public function verify(EmailVerificationRequest $request): RedirectResponse
 	{
 		$request->fulfill();
-		auth()->logout();
 		return redirect()->route('email.verified');
 	}
 }

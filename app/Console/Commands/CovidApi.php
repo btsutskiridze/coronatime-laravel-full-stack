@@ -42,23 +42,18 @@ class CovidApi extends Command
 			$countryObj = new CountryStatistics();
 			$countryObj->code = $country['code'];
 			$countryObj->name = $country['name'];
-			$countryObj->save();
-		}
 
-		//adding information to created objects
-		foreach (CountryStatistics::all() as $countryObj)
-		{
-			$response = Http::withHeaders([
+			$statisticResponse = Http::withHeaders([
 				'accept'      => 'application/json',
 				'Content-Type'=> 'application/json',
 			])->post('https://devtest.ge/get-country-statistics', [
 				'code'=> $countryObj->code,
 			]);
-			$data = $response->json();
+			$statisticData = $statisticResponse->json();
 
-			$countryObj->confirmed = $data['confirmed'];
-			$countryObj->recovered = $data['recovered'];
-			$countryObj->deaths = $data['deaths'];
+			$countryObj->confirmed = $statisticData['confirmed'];
+			$countryObj->recovered = $statisticData['recovered'];
+			$countryObj->deaths = $statisticData['deaths'];
 			$countryObj->save();
 		}
 
