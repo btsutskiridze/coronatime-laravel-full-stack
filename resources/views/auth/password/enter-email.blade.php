@@ -5,7 +5,7 @@
                 <img src="{{ asset('images/logo.svg') }}" alt="logo">
             </div>
             <div
-                class="relative flex flex-col bottom-56 w-full items-center justify-self-center self-start justify-center">
+                class="relative flex flex-col bottom-56 w-full sm:w-96 items-center justify-self-center self-start justify-center">
                 <h1 class="text-2xl font-black">{{ __('texts.reset_password') }}</h1>
                 <form action="{{ route('forgot_password.sent_email') }}" class="w-[90%] md:w-96" method="POST"
                     class="relative">
