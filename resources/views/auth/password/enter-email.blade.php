@@ -16,6 +16,7 @@
                     <x-form.button name='reset_password' class="w-[100%] sm:w-96" />
                 </form>
             </div>
+        </div>
     </x-slot>
 
 </x-layout>
