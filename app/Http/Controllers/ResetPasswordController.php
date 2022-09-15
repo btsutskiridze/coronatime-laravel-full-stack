@@ -21,7 +21,7 @@ class ResetPasswordController extends Controller
 
 	public function sentEmail(ResetPasswordRequest $request): view
 	{
-		$request->validate(['email' => 'required|email']);
+		$request->validate(['email' => 'required|exists:users,email']);
 
 		$token = Str::random(64);
 
@@ -66,6 +66,6 @@ class ResetPasswordController extends Controller
 
 		DB::table('password_resets')->where(['email'=>$updatePassword->email])->delete();
 
-		return view('auth.reset-password.reset-success');
+		return view('auth.password.reset-success');
 	}
 }

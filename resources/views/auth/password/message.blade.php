@@ -79,7 +79,7 @@
         <img src="https://i.ibb.co/dLb6CwL/landing.png" alt="landing">
         <h1>Recover password</h1>
         <p>click this button to recover a password</p>
-        <a href="{{ route('password.reset', $token) }}">
+        <a href="{{ route('reset_password.reset', $token) }}">
             <button>RECOVER PASSWORD</button>
         </a>
     </div>
