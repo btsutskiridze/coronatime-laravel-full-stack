@@ -11,7 +11,7 @@
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                     <div class="overflow-hidden shadow  md:rounded-lg"
                         style="box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.04)">
-                        <table class="min-w-full ">
+                        <table class="min-w-full overflow-x-auto ">
                             <thead class="bg-[#F6F6F7] divide-y flex flex-col  w-full divide-gray-200">
                                 <tr class="grid grid-cols-4 ">
                                     <th scope="col"

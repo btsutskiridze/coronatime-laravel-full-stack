@@ -19,7 +19,7 @@
 <body {{ $attributes(['class' => 'h-screen font-inter']) }}>
     {{ $header }}
 
-    <div class="md:w-4/5 mx-auto  px-4">
+    <div class="lg:w-4/5 mx-auto  px-4">
         {{ $slot }}
     </div>
 </body>
