@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\LanguageController;
@@ -20,8 +19,6 @@ use GuzzleHttp\Middleware;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Auth::routes(['verify' => true]);
 
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');
 
