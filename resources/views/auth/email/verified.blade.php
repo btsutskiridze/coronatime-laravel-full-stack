@@ -11,10 +11,10 @@
                         Your account is confirmed, you can sign in
                     </p>
 
-                    <div class="w-[100%] sm:w-96 mt-16">
+                    <div class="w-[100%] md:w-96 mt-16">
                         <a href="{{ route('worldwide.show') }}">
                             <button
-                                class="flex w-full justify-center rounded-lg border border-transparent
+                                class="flex w-full justify-center sm:w-96 mx-auto rounded-lg border border-transparent
                                         bg-[#0FBA68] py-[1.14rem] px-4 mb-6 md:text-base text-sm font-black 
                                         uppercase text-white shadow-sm hover:bg-green-600">
                                 Sign Up

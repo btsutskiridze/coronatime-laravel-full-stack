@@ -23,7 +23,7 @@ use GuzzleHttp\Middleware;
 Route::get('language/{locale}', [LanguageController::class, 'change'])->name('language.change');
 
 Route::middleware('guest')->group(function () {
-	Route::get('', fn () =>redirect()->route('login.show'));
+	Route::redirect('', 'login');
 	Route::view('login', 'sessions.login')->name('login.show');
 	Route::view('register', 'sessions.register')->name('register.show');
 	Route::controller(AuthController::class)->group(function () {

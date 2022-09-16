@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ResetPasswordRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ class ResetPasswordController extends Controller
 		return view('auth.password.enter-email');
 	}
 
-	public function sentEmail(ResetPasswordRequest $request): view
+	public function sentEmail(Request $request): view
 	{
 		$request->validate(['email' => 'required|exists:users,email']);
 
@@ -46,15 +46,21 @@ class ResetPasswordController extends Controller
 		]);
 	}
 
-	public function updatePassword(ResetPasswordRequest $request): view|RedirectResponse
+	public function updatePassword(Request $request): view|RedirectResponse
 	{
 		$request->validate([
 			'token'                 => 'required',
+			'email'                 => 'required|exists:users,email',
 			'password'              => 'required|min:4|confirmed',
 			'password_confirmation' => 'required',
 		]);
 
-		$updatePassword = DB::table('password_resets')->first();
+		$updatePassword = DB::table('password_resets')
+			->where([
+				'email' => $request->email,
+				'token' => $request->token,
+			])
+			->first();
 
 		if (!$updatePassword)
 		{
@@ -64,7 +70,7 @@ class ResetPasswordController extends Controller
 		User::where('email', $updatePassword->email)
 			->update(['password'=>Hash::make($request->password)]);
 
-		DB::table('password_resets')->where(['email'=>$updatePassword->email])->delete();
+		DB::table('password_resets')->where(['token'=>$request->token])->delete();
 
 		return view('auth.password.reset-success');
 	}
