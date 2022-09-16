@@ -37,10 +37,6 @@ class CovidApi extends Command
 		//creating saving json names and country code
 		foreach ($data as $country)
 		{
-			// $countryObj = new CountryStatistics();
-			// $countryObj->code = $country['code'];
-			// $countryObj->name = $country['name'];
-
 			$statisticResponse = Http::withHeaders([
 				'accept'      => 'application/json',
 				'Content-Type'=> 'application/json',
@@ -49,12 +45,7 @@ class CovidApi extends Command
 			]);
 			$statisticData = $statisticResponse->json();
 
-			// $countryObj->confirmed = $statisticData['confirmed'];
-			// $countryObj->recovered = $statisticData['recovered'];
-			// $countryObj->deaths = $statisticData['deaths'];
-			// $countryObj->save();
-
-			$countryObj = CountryStatistics::updateOrCreate(
+			CountryStatistics::updateOrCreate(
 				[
 					'id'        => $statisticData['id'],
 				],
@@ -66,8 +57,6 @@ class CovidApi extends Command
 					'deaths'    => $statisticData['deaths'],
 				]
 			);
-
-			$countryObj->save();
 		}
 
 		return 0;
