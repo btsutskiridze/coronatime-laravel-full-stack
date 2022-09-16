@@ -10,6 +10,8 @@
                 <form action="{{ route('reset_password.update') }}" method="POST" class="relative w-[90%] md:w-96">
                     @csrf
                     <input name="token" class="hidden" value="{{ $token }}">
+                    <input name="email" type="email" class="hidden" value="{{ request('email') }}">
+
                     <div>
                         <x-form.password-input />
                     </div>

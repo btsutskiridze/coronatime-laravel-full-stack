@@ -50,11 +50,17 @@ class ResetPasswordController extends Controller
 	{
 		$request->validate([
 			'token'                 => 'required',
+			'email'                 => 'required|exists:users,email',
 			'password'              => 'required|min:4|confirmed',
 			'password_confirmation' => 'required',
 		]);
 
-		$updatePassword = DB::table('password_resets')->first();
+		$updatePassword = DB::table('password_resets')
+			->where([
+				'email' => $request->email,
+				'token' => $request->token,
+			])
+			->first();
 
 		if (!$updatePassword)
 		{
@@ -64,7 +70,7 @@ class ResetPasswordController extends Controller
 		User::where('email', $updatePassword->email)
 			->update(['password'=>Hash::make($request->password)]);
 
-		DB::table('password_resets')->truncate();
+		DB::table('password_resets')->where(['token'=>$request->token])->delete();
 
 		return view('auth.password.reset-success');
 	}

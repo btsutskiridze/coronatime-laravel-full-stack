@@ -26,7 +26,8 @@
         <p style="font-weight: 400; font-size: 18px; line-height: 22px; text-align: center; margin: 16px 0 40px 0">click
             this button to recover
             a password</p>
-        <a href="{{ route('reset_password.reset', $token) }}" style="text-decoration: none">
+        <a href="{{ route('reset_password.reset', $token . '?email=' . request('email')) }}"
+            style="text-decoration: none">
             <button
                 style="
                         cursor: pointer;
