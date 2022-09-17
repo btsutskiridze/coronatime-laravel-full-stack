@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
@@ -64,7 +65,9 @@ class ResetPasswordController extends Controller
 
 		if (!$updatePassword)
 		{
-			return back()->withInput()->with('error', 'Invalid token!');
+			throw ValidationException::withMessages([
+				'error'=> 'Invalid token!',
+			]);
 		}
 
 		User::where('email', $updatePassword->email)
