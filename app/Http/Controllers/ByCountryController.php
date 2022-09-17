@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\CountryStatistics;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\View\View;
 
 class ByCountryController extends Controller
 {
-	public function show(Request $request): View
+	public function show(Request $request): View |RedirectResponse
 	{
 		if (auth()->user()->email_verified_at)
 		{
