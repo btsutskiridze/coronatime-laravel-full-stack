@@ -49,9 +49,4 @@ class AuthController extends Controller
 		auth()->logout();
 		return redirect('/');
 	}
-
-	protected function usernameOrEmail($par): string
-	{
-		return filter_var($par, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-	}
 }
