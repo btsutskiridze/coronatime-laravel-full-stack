@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
-use Illuminate\Support\Facades\DB;
 
 class CovidApiCommandTest extends TestCase
 {
@@ -12,7 +12,25 @@ class CovidApiCommandTest extends TestCase
 
 	public function test_example()
 	{
-		$this->artisan('request:countries');
-		$this->assertTrue(DB::table('country_statistics')->count() > 90);
+		Http::fake([
+			'https://devtest.ge/countries' => Http::response(json_encode([
+				[
+					'code' => 'GE',
+					'name' => [
+						'ka' => 'საქართველო',
+						'en' => 'Georgia',
+					],
+				],
+			])),
+			'https://devtest.ge/get-country-statistics' => Http::response(json_encode([
+				'id'           => 1,
+				'country'      => 'Gorgia',
+				'code'         => 'GE',
+				'confirmed'    => 200,
+				'deaths'       => 1,
+				'recovered'    => 37,
+			]), 200, ['HEADERS']),
+		]);
+		$this->artisan('request:countries')->assertSuccessful();
 	}
 }
