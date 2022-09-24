@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
 	protected function schedule(Schedule $schedule)
 	{
 		$schedule->command('request:coutries')->daily();
+		$schedule->command('remove:unverifiedUsers')->everyTwoHours();
 	}
 
 	/**
