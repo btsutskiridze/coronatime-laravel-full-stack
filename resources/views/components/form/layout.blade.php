@@ -18,8 +18,26 @@
         <div
             class="flex flex-1 flex-col self-start justify-center lg:w-[60%]  py-0 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-28">
             <div class="w-full ">
-                <div class="mt-10 mb-14">
+                <div class="mt-10 mb-14 flex justify-between">
                     <img src="{{ asset('images/logo.svg') }}" alt="logo">
+                    <ul x-data="{ open: false }"
+                        class="z-50 {{ app()->currentLocale() == 'en' ? 'md:text-base text-lg' : 'md:text-sm' }}"
+                        @click.away="open = false">
+
+                        <button @click="open = !open" class="flex flex-row items-center">
+                            <li class="font-medium py-2 pl-2">
+                                {{ app()->currentLocale() == 'en' ? 'English' : 'ქართული' }}
+                            </li>
+                            <img src="{{ asset('/images/arrow.svg') }}" alt="arrow">
+                        </button>
+
+                        <a href="{{ route('language.change', app()->currentLocale() == 'en' ? 'ka' : 'en') }}"
+                            x-show="open" style="display: none" @click="open = false"
+                            class="absolute block p-2 mt-2 rounded-lg bg-gray-100">
+                            {{ app()->currentLocale() == 'en' ? 'Georgian' : 'ინგლისური' }}
+                        </a>
+
+                    </ul>
                 </div>
                 {{ $slot }}
 
