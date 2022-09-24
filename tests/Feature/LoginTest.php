@@ -124,7 +124,16 @@ class LoginTest extends TestCase
 
 	public function test_user_will_redirect_to_login_page_if_email_not_verified()
 	{
-		$user = User::factory()->create(['email_verified_at'=>null]);
-		$this->post('/login', [$user])->assertRedirect('/');
+		$user = User::factory()->create([
+			'email_verified_at'=> null,
+			'password'         => bcrypt($password = 'reddberry'),
+		]);
+
+		$response = $this->post('/login', [
+			'username'    => $user->username,
+			'password'    => $password,
+		]);
+
+		$response->assertSessionHasErrors(['username'=> 'User has not verified email']);
 	}
 }
