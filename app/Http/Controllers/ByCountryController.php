@@ -12,36 +12,28 @@ class ByCountryController extends Controller
 {
 	public function show(Request $request): View |RedirectResponse
 	{
-		if (auth()->user()->email_verified_at)
+		$search = $request->search
+		? ucfirst($request->input('search'))
+		: '';
+
+		$countries = CountryStatistics::where('name->en', 'LIKE', '' . $search . '%')->orWhere('name->ka', 'LIKE', '' . $search . '%')->get();
+
+		if ($request->column) //if request is about sorting
 		{
-			$search = $request->search
-			? ucfirst($request->input('search'))
-			: '';
-
-			$countries = CountryStatistics::where('name->en', 'LIKE', '' . $search . '%')->orWhere('name->ka', 'LIKE', '' . $search . '%')->get();
-
-			if ($request->column) //if request is about sorting
-			{
-				$countries = App::currentLocale() === 'en'
-				? CountryStatistics::where('name->en', 'LIKE', '' . $search . '%')
-					->orderBy($request->column, $request->order)
-					->get()
-				: CountryStatistics::where('name->ka', 'LIKE', '' . $search . '%')
-					->orderBy($request->column, $request->order)
-					->get();
-			}
-
-			$newOrder = $request->order == 'asc' ? 'desc' : 'asc';
-
-			return view('by-country', [
-				'countries' => $countries,
-				'newOrder'  => $newOrder,
-			]);
+			$countries = App::currentLocale() === 'en'
+			? CountryStatistics::where('name->en', 'LIKE', '' . $search . '%')
+				->orderBy($request->column, $request->order)
+				->get()
+			: CountryStatistics::where('name->ka', 'LIKE', '' . $search . '%')
+				->orderBy($request->column, $request->order)
+				->get();
 		}
-		else
-		{
-			auth()->logout();
-			return redirect()->route('login.show');
-		}
+
+		$newOrder = $request->order == 'asc' ? 'desc' : 'asc';
+
+		return view('by-country', [
+			'countries' => $countries,
+			'newOrder'  => $newOrder,
+		]);
 	}
 }

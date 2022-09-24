@@ -39,7 +39,13 @@ class AuthController extends Controller
 				'password'=> 'The password you entered is invalid',
 			]);
 		}
-
+		elseif (auth()->user()->email_verified_at === null)
+		{
+			auth()->logout();
+			throw ValidationException::withMessages([
+				'username'=> 'User has not verified email',
+			]);
+		}
 		return redirect()->route('worldwide.show');
 	}
 
