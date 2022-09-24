@@ -20,10 +20,6 @@
                 <x-form.password-input />
                 <x-form.repeat-password-input />
 
-                <div class="flex items-center justify-between">
-                    <x-form.checkbox />
-                </div>
-
                 <x-form.button name="sign_up" />
 
                 <div class="text-center">
