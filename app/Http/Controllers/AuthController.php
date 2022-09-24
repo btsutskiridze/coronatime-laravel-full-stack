@@ -13,7 +13,6 @@ class AuthController extends Controller
 {
 	public function register(RegisterRequest $request): RedirectResponse
 	{
-		$remember = $request->has('remember') ? true : false;
 		$user = User::create([
 			'username' => $request->username,
 			'email'    => $request->email,
@@ -22,7 +21,7 @@ class AuthController extends Controller
 
 		event(new Registered($user));
 
-		auth()->login($user, $remember);
+		auth()->login($user);
 		return redirect()->route('email.verify');
 	}
 
