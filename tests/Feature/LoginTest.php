@@ -134,6 +134,6 @@ class LoginTest extends TestCase
 			'password'    => $password,
 		]);
 
-		$response->assertSessionHasErrors(['username'=> 'User has not verified email']);
+		$response->assertSessionHasErrors(['username'=> 'user_has_not_verified_email']);
 	}
 }
