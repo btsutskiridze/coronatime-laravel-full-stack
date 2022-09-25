@@ -42,7 +42,7 @@ class AuthController extends Controller
 		{
 			auth()->logout();
 			throw ValidationException::withMessages([
-				'username'=> 'User has not verified email',
+				'username'=> 'user_has_not_verified_email',
 			]);
 		}
 		return redirect()->route('worldwide.show');

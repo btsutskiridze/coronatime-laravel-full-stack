@@ -51,5 +51,5 @@ return[
 	'reset_password'                                           => 'შეცვალე პაროლი',
 	'save_changes'                                             => 'ცვლილებების შენახვა',
 	'nothing_was_found'                                        => 'არაფერი მოიძებნა',
-	'User has not verified email'                              => 'მომხმარებელს არ აქვს შემოწმებული ელ-ფოსტა',
+	'user_has_not_verified_email'                              => 'მომხმარებელს არ აქვს შემოწმებული ელ-ფოსტა',
 ];

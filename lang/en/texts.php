@@ -51,5 +51,5 @@ return[
 	'reset_password'                                           => 'Reset password',
 	'save_changes'                                             => 'Save changes',
 	'nothing_was_found'                                        => 'Nothing was found',
-	'User has not verified email'                              => 'User has not verified email',
+	'user_has_not_verified_email'                              => 'User has not verified email',
 ];
