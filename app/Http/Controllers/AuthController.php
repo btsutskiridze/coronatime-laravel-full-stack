@@ -35,7 +35,7 @@ class AuthController extends Controller
 		if (!auth()->attempt($request->only($nameInput, 'password'), $remember)
 		) {
 			throw ValidationException::withMessages([
-				'password'=> 'The password you entered is invalid',
+				'password'=> 'password_not_found',
 			]);
 		}
 		elseif (auth()->user()->email_verified_at === null)

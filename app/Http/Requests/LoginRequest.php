@@ -35,4 +35,15 @@ class LoginRequest extends FormRequest
 			'username'=> 'username or email',
 		];
 	}
+
+	public function messages()
+	{
+		return [
+			'username.required'      => 'the_username_field_is_required',
+			'username.min'           => 'the_username_must_be_at_least_3_characters',
+			'username.exists'        => 'name_not_found',
+			'password.required'      => 'the_password_field_is_required',
+			'password.enum'          => 'password_not_found',
+		];
+	}
 }

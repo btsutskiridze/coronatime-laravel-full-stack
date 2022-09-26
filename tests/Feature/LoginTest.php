@@ -93,7 +93,7 @@ class LoginTest extends TestCase
 		]);
 
 		$response->assertSessionHasErrors([
-			'password'=> 'The password you entered is invalid',
+			'password'=> 'password_not_found',
 		]);
 	}
 
