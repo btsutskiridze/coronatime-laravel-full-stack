@@ -16,13 +16,14 @@
             <form action="{{ route('register') }}" method="POST" class="space-y-6">
                 @csrf
                 <x-form.input name="username" placeholder="enter_unique_username_or_email" />
+                @if (!$errors->any())
+                    <p class="text-[#808189] max-w-md" style="margin-top: 8px; ">
+                        {{ __('texts.username_should_be_unique_min_3_symbols') }}
+                    </p>
+                @endif
                 <x-form.input name="email" type="email" placeholder="enter_your_email" />
                 <x-form.password-input />
                 <x-form.repeat-password-input />
-
-                <div class="flex items-center justify-between">
-                    <x-form.checkbox />
-                </div>
 
                 <x-form.button name="sign_up" />
 

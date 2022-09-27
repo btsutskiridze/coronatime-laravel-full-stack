@@ -25,7 +25,7 @@
             Confirmation email</h1>
         <p style="font-weight: 400; font-size: 18px; line-height: 22px; text-align: center; margin: 16px 0 40px 0">click
             this button to verify your email</p>
-        <a href="{{ $url }}" style="text-decoration: none">
+        <a href="{{ $url }}" style="text-decoration: none; cursor: pointer;">
             <button
                 style="
                         cursor: pointer;

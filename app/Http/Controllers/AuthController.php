@@ -13,7 +13,6 @@ class AuthController extends Controller
 {
 	public function register(RegisterRequest $request): RedirectResponse
 	{
-		$remember = $request->has('remember') ? true : false;
 		$user = User::create([
 			'username' => $request->username,
 			'email'    => $request->email,
@@ -22,7 +21,7 @@ class AuthController extends Controller
 
 		event(new Registered($user));
 
-		auth()->login($user, $remember);
+		auth()->login($user);
 		return redirect()->route('email.verify');
 	}
 
@@ -36,10 +35,16 @@ class AuthController extends Controller
 		if (!auth()->attempt($request->only($nameInput, 'password'), $remember)
 		) {
 			throw ValidationException::withMessages([
-				'password'=> 'The password you entered is invalid',
+				'password'=> 'password_not_found',
 			]);
 		}
-
+		elseif (auth()->user()->email_verified_at === null)
+		{
+			auth()->logout();
+			throw ValidationException::withMessages([
+				'username'=> 'user_has_not_verified_email',
+			]);
+		}
 		return redirect()->route('worldwide.show');
 	}
 
