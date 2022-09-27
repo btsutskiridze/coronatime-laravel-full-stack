@@ -41,6 +41,7 @@ return[
 	'name_not_found'                                           => 'არჩეული მომხმარებლი არ მოიძებნა',
 	'email_not_found'                                          => 'არჩეული ელ-ფოსტა არ მოიძებნა.',
 	'the_username_must_be_at_least_3_characters'               => 'მომხმარებლის სახელი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',
+	'username_should_be_unique_min_3_symbols'                  => 'მომხმარებლის სახელი უნდა იყოს უნიკალური, უნდა შედგებოდეს მინ 3 სიმბოლოსგან',
 	'the_password_confirmation_does_not_match'                 => 'პაროლები არ ემთხვევა.',
 	'the_password_must_be_at_least_3_characters'               => 'პაროლი უნდა შეიცავდეს მინიმუმ 3 სიმბოლოს.',
 	'the_username_has_already_been_taken'                      => 'მომხმარებლის სახელი უკვე არსებობს',

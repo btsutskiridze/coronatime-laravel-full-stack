@@ -41,6 +41,7 @@ return[
 	'name_not_found'                                           => 'Name not found',
 	'email_not_found'                                          => 'Email not found',
 	'the_username_must_be_at_least_3_characters'               => 'The username must be at least 3 characters.',
+	'username_should_be_unique_min_3_symbols'                  => 'Username should be unique, min 3 symbols',
 	'the_password_confirmation_does_not_match'                 => 'The password confirmation does not match.',
 	'the_password_must_be_at_least_3_characters'               => 'The password must be at least 3 characters.',
 	'the_username_has_already_been_taken'                      => 'The username has already been taken.',
