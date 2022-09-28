@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorldwideController;
 use App\Http\Controllers\ByCountryController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ResetPasswordController;
-use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\LanguageController;
 use GuzzleHttp\Middleware;
 
